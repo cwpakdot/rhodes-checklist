@@ -671,58 +671,58 @@ const schoolGroups = {
 
 const summerPlan = [
   {
-    week: "June 7–20", phase: "Launch", color: "#7C5C2E", accent: "#F5ECD7",
+    id: "wk1", week: "June 7–20", phase: "Launch", color: "#7C5C2E", accent: "#F5ECD7",
     tasks: [
-      "Email 5 NYU faculty for lab positions — prioritize Emily Balcetis (visual perception) and Jay Van Bavel (social psych)",
-      "Email NYU Fellowships Office to introduce yourself and request a meeting",
-      "Create or update LinkedIn with psychology + visual art focus",
-      "Read 5 foundational papers in empirical aesthetics and art therapy (start with Semir Zeki, Ellen Winner)",
-      "Begin GPA audit: map every remaining required course and target grade",
-      "Set up a personal website: claudiapak.com — portfolio of paintings + research interests in one place",
+      { id: "wk1t1", text: "Email 5 NYU faculty for lab positions — prioritize Emily Balcetis (visual perception) and Jay Van Bavel (social psych)" },
+      { id: "wk1t2", text: "Email NYU Fellowships Office to introduce yourself and request a meeting" },
+      { id: "wk1t3", text: "Create or update LinkedIn with psychology + visual art focus" },
+      { id: "wk1t4", text: "Read 5 foundational papers in empirical aesthetics and art therapy (start with Semir Zeki, Ellen Winner)" },
+      { id: "wk1t5", text: "Begin GPA audit: map every remaining required course and target grade" },
+      { id: "wk1t6", text: "Set up a personal website: claudiapak.com — portfolio of paintings + research interests in one place" },
     ]
   },
   {
-    week: "June 21 – July 4", phase: "Research & Art Practice", color: "#1D5E72", accent: "#E0F2F7",
+    id: "wk2", week: "June 21 – July 4", phase: "Research & Art Practice", color: "#1D5E72", accent: "#E0F2F7",
     tasks: [
-      "Follow up on unanswered faculty emails — resend with one new specific hook",
-      "Begin writing 'why psychology' personal statement draft: open with a painting moment, not a fact",
-      "Research NSF REU programs in psychology — bookmark 8–10 targets for November applications",
-      "Research Active Minds and Psi Chi chapter structure at NYU — plan to join both in fall",
-      "Read Cecil Rhodes' selection criteria and 3 past scholar profiles in social sciences",
-      "Begin a painting series on a psychological theme — document the process; this becomes content and evidence of serious practice",
+      { id: "wk2t1", text: "Follow up on unanswered faculty emails — resend with one new specific hook" },
+      { id: "wk2t2", text: "Begin writing 'why psychology' personal statement draft: open with a painting moment, not a fact" },
+      { id: "wk2t3", text: "Research NSF REU programs in psychology — bookmark 8–10 targets for November applications" },
+      { id: "wk2t4", text: "Research Active Minds and Psi Chi chapter structure at NYU — plan to join both in fall" },
+      { id: "wk2t5", text: "Read Cecil Rhodes' selection criteria and 3 past scholar profiles in social sciences" },
+      { id: "wk2t6", text: "Begin a painting series on a psychological theme — document the process; this becomes content and evidence of serious practice" },
     ]
   },
   {
-    week: "July 5–18", phase: "Deepen & Build", color: "#2E6B3E", accent: "#E4F5E8",
+    id: "wk3", week: "July 5–18", phase: "Deepen & Build", color: "#2E6B3E", accent: "#E4F5E8",
     tasks: [
-      "If lab email accepted: schedule first meeting, prepare 3 intelligent questions about their current work",
-      "Write first op-ed draft for NYU Washington Square News (topic: visual art and mental health — what the research says)",
-      "Map out NYU London fall courses — identify any psychology-adjacent or art-adjacent modules at partner universities",
-      "Research London mental health volunteer opportunities: Mind UK, Samaritans, or Wellcome Collection volunteer programs",
-      "Visit Wellcome Collection website — plan to attend events in London that sit at art × science intersection",
-      "Begin reading: 'The Art Instinct' (Denis Dutton) + 'The Body Keeps the Score' (van der Kolk)",
+      { id: "wk3t1", text: "If lab email accepted: schedule first meeting, prepare 3 intelligent questions about their current work" },
+      { id: "wk3t2", text: "Write first op-ed draft for NYU Washington Square News (topic: visual art and mental health — what the research says)" },
+      { id: "wk3t3", text: "Map out NYU London fall courses — identify any psychology-adjacent or art-adjacent modules at partner universities" },
+      { id: "wk3t4", text: "Research London mental health volunteer opportunities: Mind UK, Samaritans, or Wellcome Collection volunteer programs" },
+      { id: "wk3t5", text: "Visit Wellcome Collection website — plan to attend events in London that sit at art × science intersection" },
+      { id: "wk3t6", text: "Begin reading: 'The Art Instinct' (Denis Dutton) + 'The Body Keeps the Score' (van der Kolk)" },
     ]
   },
   {
-    week: "July 19 – Aug 1", phase: "Output & Apply", color: "#6B2E5A", accent: "#F5E4F0",
+    id: "wk4", week: "July 19 – Aug 1", phase: "Output & Apply", color: "#6B2E5A", accent: "#F5E4F0",
     tasks: [
-      "Finalize and submit op-ed to Washington Square News",
-      "Draft thesis topic in 200 words — frame it around your painting background: e.g. 'How aesthetic engagement with visual art affects emotional regulation'",
-      "Research Crisis Text Line volunteer onboarding — sign up (remote, training provided)",
-      "Identify 3 NYC internships to apply for: Child Mind Institute, NYU Steinhardt Art Therapy lab, Bring Change to Mind",
-      "Continue lab work if started; if not, email 2 more faculty with revised approach",
-      "Write a short artist statement connecting your painting practice to your psychology research interests — 200 words",
+      { id: "wk4t1", text: "Finalize and submit op-ed to Washington Square News" },
+      { id: "wk4t2", text: "Draft thesis topic in 200 words — frame it around your painting background: e.g. 'How aesthetic engagement with visual art affects emotional regulation'" },
+      { id: "wk4t3", text: "Research Crisis Text Line volunteer onboarding — sign up (remote, training provided)" },
+      { id: "wk4t4", text: "Identify 3 NYC internships to apply for: Child Mind Institute, NYU Steinhardt Art Therapy lab, Bring Change to Mind" },
+      { id: "wk4t5", text: "Continue lab work if started; if not, email 2 more faculty with revised approach" },
+      { id: "wk4t6", text: "Write a short artist statement connecting your painting practice to your psychology research interests — 200 words" },
     ]
   },
   {
-    week: "Aug 2–27", phase: "London Prep & Consolidate", color: "#3D2A6B", accent: "#EDE8F5",
+    id: "wk5", week: "Aug 2–27", phase: "London Prep & Consolidate", color: "#3D2A6B", accent: "#EDE8F5",
     tasks: [
-      "Prepare a 'London plan': Wellcome Collection visits, volunteer commitments, Oxford/Cambridge visit dates, academic targets",
-      "Email NYU London advisor about psychology-adjacent course options and any art therapy or visual cognition modules",
-      "Research Tate Modern and Tate Britain education/events programs — attend at least 2 during the semester",
-      "Draft a 1-page research statement: your painting background, your psychological questions, your methods",
-      "Confirm lab position or regroup — identify backup faculty to contact remotely from London in September",
-      "Pack: bring painting supplies and your draft personal statement to refine in London — both matter",
+      { id: "wk5t1", text: "Prepare a 'London plan': Wellcome Collection visits, volunteer commitments, Oxford/Cambridge visit dates, academic targets" },
+      { id: "wk5t2", text: "Email NYU London advisor about psychology-adjacent course options and any art therapy or visual cognition modules" },
+      { id: "wk5t3", text: "Research Tate Modern and Tate Britain education/events programs — attend at least 2 during the semester" },
+      { id: "wk5t4", text: "Draft a 1-page research statement: your painting background, your psychological questions, your methods" },
+      { id: "wk5t5", text: "Confirm lab position or regroup — identify backup faculty to contact remotely from London in September" },
+      { id: "wk5t6", text: "Pack: bring painting supplies and your draft personal statement to refine in London — both matter" },
     ]
   },
 ];
@@ -877,36 +877,108 @@ function TimelinePanel() {
 
 // ── SUMMER PLAN PANEL ─────────────────────────────────────────────────────────
 
-function SummerPanel() {
+function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onDeleteTask, onAddTask, onDeleteWeekTask }) {
   const [openWeek, setOpenWeek] = useState(0);
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
+  const [addingWeek, setAddingWeek] = useState(null);
+  const [newTaskText, setNewTaskText] = useState("");
+
+  const startEdit = (task) => { setEditingId(task.id); setEditText(task.text); };
+  const submitEdit = () => {
+    if (editText.trim()) onEditTask(editingId, editText.trim());
+    setEditingId(null); setEditText("");
+  };
+
+  const submitAdd = (weekId) => {
+    if (!newTaskText.trim()) return;
+    onAddTask(weekId, newTaskText.trim());
+    setNewTaskText("");
+    setAddingWeek(null);
+  };
+
   return (
     <div>
       <p style={{ margin: "0 0 24px 0", fontSize: 13, fontFamily: "system-ui", color: "#888", lineHeight: 1.6 }}>
-        You have June 7 – August 27 (12 weeks). This is the highest-leverage window before applications begin. Every week below maps to a concrete set of actions.
+        You have June 7 – August 27 (12 weeks). This is the highest-leverage window before applications begin. Every week below maps to a concrete set of actions — check items off, edit, or add your own.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {summerPlan.map((week, i) => (
-          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${openWeek === i ? week.color + "40" : "#E8E4DA"}`, borderLeft: `3px solid ${week.color}`, borderRadius: 8, overflow: "hidden", transition: "all 0.2s ease", boxShadow: openWeek === i ? "0 2px 8px rgba(0,0,0,0.06)" : "none" }}>
+        {summerData.map((week, i) => {
+          const doneCount = week.tasks.filter((t) => checked[t.id]).length;
+          return (
+          <div key={week.id} style={{ background: "#FFFFFF", border: `1px solid ${openWeek === i ? week.color + "40" : "#E8E4DA"}`, borderLeft: `3px solid ${week.color}`, borderRadius: 8, overflow: "hidden", transition: "all 0.2s ease", boxShadow: openWeek === i ? "0 2px 8px rgba(0,0,0,0.06)" : "none" }}>
             <button onClick={() => setOpenWeek(openWeek === i ? -1 : i)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 18px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: week.color, flexShrink: 0 }} />
                 <span style={{ fontSize: 13, fontFamily: "system-ui", fontWeight: 600, color: week.color }}>{week.week}</span>
                 <span style={{ fontSize: 12, fontFamily: "system-ui", color: "#AAA", fontStyle: "italic" }}>{week.phase}</span>
               </div>
-              <span style={{ fontSize: 16, color: "#CCC", transform: openWeek === i ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontSize: 11, fontFamily: "system-ui", color: "#CCC" }}>{doneCount}/{week.tasks.length}</span>
+                <span style={{ fontSize: 16, color: "#CCC", transform: openWeek === i ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+              </div>
             </button>
             {openWeek === i && (
               <div style={{ padding: "0 18px 16px 18px", background: week.accent + "55" }}>
-                {week.tasks.map((task, j) => (
-                  <div key={j} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
-                    <span style={{ color: week.color, fontSize: 12, flexShrink: 0, marginTop: 2, fontWeight: 700 }}>→</span>
-                    <span style={{ fontSize: 13, fontFamily: "system-ui", color: "#2A2520", lineHeight: 1.55 }}>{task}</span>
+                {week.tasks.map((task) => {
+                  const isChecked = !!checked[task.id];
+                  const isEditing = editingId === task.id;
+                  return (
+                    <div key={task.id} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
+                      {/* Checkbox replacing the old arrow */}
+                      <div onClick={() => onToggle(task.id)} style={{ width: 16, height: 16, flexShrink: 0, marginTop: 2, border: `1.5px solid ${isChecked ? week.color : "#D0C8BC"}`, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", background: isChecked ? week.accent : "#FFF", cursor: "pointer", transition: "all 0.15s ease" }}>
+                        {isChecked && <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.2L3.2 5.5L8 1" stroke={week.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+                      </div>
+
+                      {isEditing ? (
+                        <div style={{ flex: 1, display: "flex", gap: 6, alignItems: "center" }}>
+                          <input
+                            autoFocus
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                            onKeyDown={(e) => { if (e.key === "Enter") submitEdit(); if (e.key === "Escape") setEditingId(null); }}
+                            style={{ flex: 1, fontSize: 13, fontFamily: "system-ui", border: `1px solid ${week.color}50`, borderRadius: 5, padding: "4px 8px", outline: "none", color: "#2A2520", background: "#FFF" }}
+                          />
+                          <button onClick={submitEdit} style={{ padding: "4px 10px", background: week.color, border: "none", borderRadius: 5, color: "#FFF", fontSize: 11, fontFamily: "system-ui", fontWeight: 600, cursor: "pointer" }}>Save</button>
+                          <button onClick={() => setEditingId(null)} style={{ padding: "4px 8px", background: "none", border: "1px solid #E0D8CC", borderRadius: 5, color: "#AAA", fontSize: 11, fontFamily: "system-ui", cursor: "pointer" }}>Cancel</button>
+                        </div>
+                      ) : (
+                        <>
+                          <span style={{ flex: 1, fontSize: 13, fontFamily: "system-ui", color: isChecked ? "#AAA" : "#2A2520", lineHeight: 1.55, textDecoration: isChecked ? "line-through" : "none", textDecorationColor: "#C8C0B0" }}>{task.text}</span>
+                          <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0 }}>
+                            <button onClick={() => startEdit(task)} style={{ background: "none", border: "none", cursor: "pointer", color: "#D0C8BC", fontSize: 12, padding: "0 3px", transition: "color 0.15s ease" }} onMouseEnter={e => e.currentTarget.style.color = week.color} onMouseLeave={e => e.currentTarget.style.color = "#D0C8BC"} title="Edit">✎</button>
+                            <button onClick={() => onDeleteTask(task.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "#D0C8BC", fontSize: 15, padding: "0 3px", lineHeight: 1, transition: "color 0.15s ease" }} onMouseEnter={e => e.currentTarget.style.color = "#D13B2A"} onMouseLeave={e => e.currentTarget.style.color = "#D0C8BC"} title="Remove">×</button>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* Add task row */}
+                {addingWeek === week.id ? (
+                  <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 10, paddingTop: 10, borderTop: `1px dashed ${week.color}30` }}>
+                    <div style={{ width: 16, height: 16, flexShrink: 0, border: `1.5px dashed ${week.color}50`, borderRadius: 4 }} />
+                    <input
+                      autoFocus
+                      value={newTaskText}
+                      onChange={(e) => setNewTaskText(e.target.value)}
+                      onKeyDown={(e) => { if (e.key === "Enter") submitAdd(week.id); if (e.key === "Escape") { setAddingWeek(null); setNewTaskText(""); } }}
+                      placeholder="New task... (Enter to add, Esc to cancel)"
+                      style={{ flex: 1, fontSize: 13, fontFamily: "system-ui", border: `1px solid ${week.color}50`, borderRadius: 5, padding: "4px 8px", outline: "none", color: "#2A2520", background: "#FFF" }}
+                    />
+                    <button onClick={() => submitAdd(week.id)} style={{ padding: "4px 10px", background: week.color, border: "none", borderRadius: 5, color: "#FFF", fontSize: 11, fontFamily: "system-ui", fontWeight: 600, cursor: "pointer" }}>Add</button>
+                    <button onClick={() => { setAddingWeek(null); setNewTaskText(""); }} style={{ padding: "4px 8px", background: "none", border: "1px solid #E0D8CC", borderRadius: 5, color: "#AAA", fontSize: 11, fontFamily: "system-ui", cursor: "pointer" }}>Cancel</button>
                   </div>
-                ))}
+                ) : (
+                  <button onClick={() => setAddingWeek(week.id)} style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 10, padding: "6px 10px", background: "transparent", border: `1px dashed ${week.color}40`, borderRadius: 6, cursor: "pointer", color: week.color, fontFamily: "system-ui", fontSize: 12 }}>
+                    <span style={{ fontSize: 14, lineHeight: 1 }}>+</span> Add task
+                  </button>
+                )}
               </div>
             )}
           </div>
-        ))}
+        )})}
       </div>
       <div style={{ marginTop: 20, padding: "12px 16px", background: "#FEF0EE", border: "1px solid #D13B2A20", borderLeft: "3px solid #D13B2A", borderRadius: 8, fontSize: 12, fontFamily: "system-ui", color: "#6A1A1A", lineHeight: 1.6 }}>
         <strong>Non-negotiable this summer:</strong> (1) secure lab position or research volunteer role, (2) email NYU Fellowships Office, (3) draft a version of your personal statement. Everything else is a bonus.
@@ -1074,6 +1146,45 @@ export default function RhodesChecklist() {
   const [newItemText, setNewItemText] = useState("");
   const [newItemPriority, setNewItemPriority] = useState("high");
   const [showAddForm, setShowAddForm] = useState(false);
+  const [summerPlanState, setSummerPlanState] = useState(summerPlan);
+
+  const editSummerTask = (taskId, newText) => {
+    setSummerPlanState((prev) => prev.map((week) => ({
+      ...week,
+      tasks: week.tasks.map((t) => t.id === taskId ? { ...t, text: newText } : t),
+    })));
+  };
+
+  const deleteSummerTask = (taskId) => {
+    let removedText = "";
+    setSummerPlanState((prev) => prev.map((week) => {
+      const found = week.tasks.find((t) => t.id === taskId);
+      if (found) removedText = found.text;
+      return { ...week, tasks: week.tasks.filter((t) => t.id !== taskId) };
+    }));
+    setChecked((prev) => { const next = { ...prev }; delete next[taskId]; return next; });
+    pushUndo({ label: `Removed "${removedText.slice(0, 30)}"`, revert: () => {
+      setSummerPlanState((prev) => prev.map((week) => {
+        const orig = summerPlan.find((w) => w.id === week.id);
+        const origTask = orig?.tasks.find((t) => t.id === taskId);
+        if (origTask && !week.tasks.find((t) => t.id === taskId)) {
+          const idx = orig.tasks.findIndex((t) => t.id === taskId);
+          const newTasks = [...week.tasks];
+          newTasks.splice(Math.min(idx, newTasks.length), 0, origTask);
+          return { ...week, tasks: newTasks };
+        }
+        return week;
+      }));
+    }});
+  };
+
+  const addSummerTask = (weekId, text) => {
+    const taskId = `custom_${weekId}_${Date.now()}`;
+    setSummerPlanState((prev) => prev.map((week) => week.id === weekId ? { ...week, tasks: [...week.tasks, { id: taskId, text }] } : week));
+    pushUndo({ label: `Added "${text.slice(0, 30)}"`, revert: () => {
+      setSummerPlanState((prev) => prev.map((week) => week.id === weekId ? { ...week, tasks: week.tasks.filter((t) => t.id !== taskId) } : week));
+    }});
+  };
 
   const pushUndo = (action) => {
     setUndoStack((prev) => [...prev.slice(-19), action]);
@@ -1255,7 +1366,14 @@ export default function RhodesChecklist() {
           <div style={{ background: "#FAFAF8", borderRadius: 12, padding: "32px 36px", border: "1px solid #E8E4DA" }}>
             <h2 style={{ margin: "0 0 4px 0", fontSize: 20, fontWeight: 400, color: "#1A1208" }}>Summer 2026 Action Plan</h2>
             <p style={{ margin: "0 0 8px 0", fontSize: 13, color: "#AAA", fontFamily: "system-ui" }}>June 7 – August 27, 2026 · 12 weeks before NYU London</p>
-            <SummerPanel />
+            <SummerPanel
+              checked={checked}
+              onToggle={toggle}
+              summerData={summerPlanState}
+              onEditTask={editSummerTask}
+              onDeleteTask={deleteSummerTask}
+              onAddTask={addSummerTask}
+            />
           </div>
         )}
 
