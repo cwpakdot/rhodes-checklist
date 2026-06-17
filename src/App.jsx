@@ -877,12 +877,14 @@ function TimelinePanel() {
 
 // ── SUMMER PLAN PANEL ─────────────────────────────────────────────────────────
 
-function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onDeleteTask, onAddTask, onDeleteWeekTask }) {
+function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onDeleteTask, onAddTask, onDeleteWeekTask, onReorderTask }) {
   const [openWeek, setOpenWeek] = useState(0);
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
   const [addingWeek, setAddingWeek] = useState(null);
   const [newTaskText, setNewTaskText] = useState("");
+  const [draggedTaskId, setDraggedTaskId] = useState(null);
+  const [dragOverTaskId, setDragOverTaskId] = useState(null);
 
   const startEdit = (task) => { setEditingId(task.id); setEditText(task.text); };
   const submitEdit = () => {
@@ -900,7 +902,7 @@ function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onD
   return (
     <div>
       <p style={{ margin: "0 0 24px 0", fontSize: 13, fontFamily: "system-ui", color: "#888", lineHeight: 1.6, textAlign: "left" }}>
-        You have June 7 – August 27 (12 weeks). This is the highest-leverage window before applications begin. Every week below maps to a concrete set of actions — check items off, edit, or add your own.
+        You have June 7 – August 27 (12 weeks). This is the highest-leverage window before applications begin. Every week below maps to a concrete set of actions — check items off, edit, add, or drag to reorder.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {summerData.map((week, i) => {
@@ -923,8 +925,19 @@ function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onD
                 {week.tasks.map((task) => {
                   const isChecked = !!checked[task.id];
                   const isEditing = editingId === task.id;
+                  const isDragOver = dragOverTaskId === task.id;
+                  const isDragging = draggedTaskId === task.id;
                   return (
-                    <div key={task.id} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
+                    <div
+                      key={task.id}
+                      draggable
+                      onDragStart={() => setDraggedTaskId(task.id)}
+                      onDragOver={(e) => { e.preventDefault(); if (task.id !== draggedTaskId) setDragOverTaskId(task.id); }}
+                      onDrop={(e) => { e.preventDefault(); if (draggedTaskId) onReorderTask(week.id, draggedTaskId, task.id); setDraggedTaskId(null); setDragOverTaskId(null); }}
+                      onDragEnd={() => { setDraggedTaskId(null); setDragOverTaskId(null); }}
+                      style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start", padding: "4px 6px", borderRadius: 6, background: isDragOver ? week.accent : "transparent", border: isDragOver ? `1px dashed ${week.color}60` : "1px solid transparent", opacity: isDragging ? 0.4 : 1, transition: "all 0.15s ease" }}
+                    >
+                      <div style={{ cursor: "grab", color: "#D0C8BC", fontSize: 13, flexShrink: 0, marginTop: 3, lineHeight: 1, userSelect: "none", letterSpacing: "-1px" }} title="Drag to reorder">⠿</div>
                       {/* Checkbox replacing the old arrow */}
                       <div onClick={() => onToggle(task.id)} style={{ width: 16, height: 16, flexShrink: 0, marginTop: 2, border: `1.5px solid ${isChecked ? week.color : "#D0C8BC"}`, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", background: isChecked ? week.accent : "#FFF", cursor: "pointer", transition: "all 0.15s ease" }}>
                         {isChecked && <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.2L3.2 5.5L8 1" stroke={week.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -989,7 +1002,7 @@ function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onD
 
 // ── CHECKLIST ITEM ────────────────────────────────────────────────────────────
 
-function ChecklistItem({ item, checked, onToggle, onDelete, onDeleteSubtask, onAddSubtask, onSetDueDate, dueDates, catColor, catAccent, note, onNoteChange }) {
+function ChecklistItem({ item, checked, onToggle, onDelete, onDeleteSubtask, onAddSubtask, onSetDueDate, dueDates, catColor, catAccent, note, onNoteChange, draggable, onDragStartItem, onDragOverItem, onDropItem, onDragEndItem, isDragOver, isDragging }) {
   const [openPanel, setOpenPanel] = useState(null); // null | "subtasks" | "notes"
   const [editingDueDate, setEditingDueDate] = useState(null);
   const [newSubText, setNewSubText] = useState("");
@@ -1026,10 +1039,24 @@ function ChecklistItem({ item, checked, onToggle, onDelete, onDeleteSubtask, onA
   const isOpen = openPanel !== null;
 
   return (
-    <div style={{ background: isChecked ? "#F5F3EF" : "#FFFFFF", border: `1px solid ${isChecked ? "#DDD8CC" : isOpen ? catColor + "35" : "#E8E4DA"}`, borderRadius: 8, overflow: "hidden", transition: "all 0.2s ease", boxShadow: isChecked ? "none" : "0 1px 3px rgba(0,0,0,0.04)", opacity: isChecked ? 0.7 : 1 }}>
+    <div
+      draggable={draggable}
+      onDragStart={(e) => { onDragStartItem && onDragStartItem(item.id); e.dataTransfer.effectAllowed = "move"; }}
+      onDragOver={(e) => { e.preventDefault(); onDragOverItem && onDragOverItem(item.id); }}
+      onDrop={(e) => { e.preventDefault(); onDropItem && onDropItem(item.id); }}
+      onDragEnd={() => onDragEndItem && onDragEndItem()}
+      style={{ background: isChecked ? "#F5F3EF" : "#FFFFFF", border: `1px solid ${isDragOver ? catColor : isChecked ? "#DDD8CC" : isOpen ? catColor + "35" : "#E8E4DA"}`, borderRadius: 8, overflow: "hidden", transition: "all 0.2s ease", boxShadow: isDragOver ? `0 0 0 2px ${catColor}40` : isChecked ? "none" : "0 1px 3px rgba(0,0,0,0.04)", opacity: isDragging ? 0.4 : isChecked ? 0.7 : 1 }}
+    >
 
       {/* Main row */}
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "12px 14px", cursor: "pointer" }} onClick={() => onToggle(item.id)}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "12px 14px", cursor: "pointer" }} onClick={() => onToggle(item.id)}>
+        {draggable && (
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{ cursor: "grab", color: "#D0C8BC", fontSize: 14, flexShrink: 0, marginTop: 2, lineHeight: 1, userSelect: "none", letterSpacing: "-1px" }}
+            title="Drag to reorder"
+          >⠿</div>
+        )}
         <div style={{ width: 18, height: 18, flexShrink: 0, border: `1.5px solid ${isChecked ? catColor : "#D0C8BC"}`, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", background: isChecked ? catAccent : "#FAFAF8", marginTop: 1, transition: "all 0.2s ease" }}>
           {isChecked && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 3.5L3.5 6.5L9 1" stroke={catColor} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
         </div>
@@ -1147,6 +1174,23 @@ export default function RhodesChecklist() {
   const [newItemPriority, setNewItemPriority] = useState("high");
   const [showAddForm, setShowAddForm] = useState(false);
   const [summerPlanState, setSummerPlanState] = useState(summerPlan);
+  const [customOrder, setCustomOrder] = useState({}); // { categoryId: [itemId, itemId, ...] }
+  const [draggedId, setDraggedId] = useState(null);
+  const [dragOverId, setDragOverId] = useState(null);
+
+  const reorderItems = (catId, draggedItemId, targetItemId) => {
+    if (draggedItemId === targetItemId) return;
+    setCustomOrder((prev) => {
+      const currentOrder = prev[catId] || getItems(categories.find((c) => c.id === catId)).map((i) => i.id);
+      const order = [...currentOrder];
+      const fromIdx = order.indexOf(draggedItemId);
+      const toIdx = order.indexOf(targetItemId);
+      if (fromIdx === -1 || toIdx === -1) return prev;
+      order.splice(fromIdx, 1);
+      order.splice(toIdx, 0, draggedItemId);
+      return { ...prev, [catId]: order };
+    });
+  };
 
   const editSummerTask = (taskId, newText) => {
     setSummerPlanState((prev) => prev.map((week) => ({
@@ -1184,6 +1228,20 @@ export default function RhodesChecklist() {
     pushUndo({ label: `Added "${text.slice(0, 30)}"`, revert: () => {
       setSummerPlanState((prev) => prev.map((week) => week.id === weekId ? { ...week, tasks: week.tasks.filter((t) => t.id !== taskId) } : week));
     }});
+  };
+
+  const reorderSummerTask = (weekId, draggedTaskId, targetTaskId) => {
+    if (draggedTaskId === targetTaskId) return;
+    setSummerPlanState((prev) => prev.map((week) => {
+      if (week.id !== weekId) return week;
+      const tasks = [...week.tasks];
+      const fromIdx = tasks.findIndex((t) => t.id === draggedTaskId);
+      const toIdx = tasks.findIndex((t) => t.id === targetTaskId);
+      if (fromIdx === -1 || toIdx === -1) return week;
+      const [moved] = tasks.splice(fromIdx, 1);
+      tasks.splice(toIdx, 0, moved);
+      return { ...week, tasks };
+    }));
   };
 
   const pushUndo = (action) => {
@@ -1260,24 +1318,33 @@ export default function RhodesChecklist() {
     pushUndo({ label: `Added subtask "${text.slice(0, 30)}"`, revert: () => { setRemovedSubtasks((prev) => new Set([...prev, subId])); } });
   };
 
-  const getItems = (cat) => [
-    ...cat.items
-      .filter((i) => !removedItems.has(i.id))
-      .map((i) => {
-        const extraSubs = JSON.parse(notes[`__subs__${i.id}`] || "[]");
-        return {
-          ...i,
-          subtasks: [
-            ...(i.subtasks || []).filter((s) => !removedSubtasks.has(s.id)),
-            ...extraSubs.filter((s) => !removedSubtasks.has(s.id)),
-          ],
-        };
-      }),
-    ...(customItems[cat.id] || []).map((i) => ({
-      ...i,
-      subtasks: (i.subtasks || []).filter((s) => !removedSubtasks.has(s.id)),
-    })),
-  ];
+  const getItems = (cat) => {
+    const base = [
+      ...cat.items
+        .filter((i) => !removedItems.has(i.id))
+        .map((i) => {
+          const extraSubs = JSON.parse(notes[`__subs__${i.id}`] || "[]");
+          return {
+            ...i,
+            subtasks: [
+              ...(i.subtasks || []).filter((s) => !removedSubtasks.has(s.id)),
+              ...extraSubs.filter((s) => !removedSubtasks.has(s.id)),
+            ],
+          };
+        }),
+      ...(customItems[cat.id] || []).map((i) => ({
+        ...i,
+        subtasks: (i.subtasks || []).filter((s) => !removedSubtasks.has(s.id)),
+      })),
+    ];
+    const order = customOrder[cat.id];
+    if (!order) return base;
+    const byId = new Map(base.map((i) => [i.id, i]));
+    const ordered = order.filter((id) => byId.has(id)).map((id) => byId.get(id));
+    // append any items not yet in the saved order (e.g. newly added)
+    base.forEach((i) => { if (!order.includes(i.id)) ordered.push(i); });
+    return ordered;
+  };
 
   const allItems = categories.flatMap((c) => {
     const items = getItems(c);
@@ -1373,6 +1440,7 @@ export default function RhodesChecklist() {
               onEditTask={editSummerTask}
               onDeleteTask={deleteSummerTask}
               onAddTask={addSummerTask}
+              onReorderTask={reorderSummerTask}
             />
           </div>
         )}
@@ -1458,6 +1526,13 @@ export default function RhodesChecklist() {
                           onNoteChange={setNote}
                           catColor={activeData.color}
                           catAccent={activeData.accent}
+                          draggable={true}
+                          isDragging={draggedId === item.id}
+                          isDragOver={dragOverId === item.id}
+                          onDragStartItem={(id) => setDraggedId(id)}
+                          onDragOverItem={(id) => { if (id !== draggedId) setDragOverId(id); }}
+                          onDropItem={(targetId) => { if (draggedId) reorderItems(activeData.id, draggedId, targetId); setDraggedId(null); setDragOverId(null); }}
+                          onDragEndItem={() => { setDraggedId(null); setDragOverId(null); }}
                         />
                       ))}
                     </div>
