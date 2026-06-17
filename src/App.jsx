@@ -899,7 +899,7 @@ function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onD
 
   return (
     <div>
-      <p style={{ margin: "0 0 24px 0", fontSize: 13, fontFamily: "system-ui", color: "#888", lineHeight: 1.6 }}>
+      <p style={{ margin: "0 0 24px 0", fontSize: 13, fontFamily: "system-ui", color: "#888", lineHeight: 1.6, textAlign: "left" }}>
         You have June 7 – August 27 (12 weeks). This is the highest-leverage window before applications begin. Every week below maps to a concrete set of actions — check items off, edit, or add your own.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -944,7 +944,7 @@ function SummerPanel({ checked, onToggle, weekColor, summerData, onEditTask, onD
                         </div>
                       ) : (
                         <>
-                          <span style={{ flex: 1, fontSize: 13, fontFamily: "system-ui", color: isChecked ? "#AAA" : "#2A2520", lineHeight: 1.55, textDecoration: isChecked ? "line-through" : "none", textDecorationColor: "#C8C0B0" }}>{task.text}</span>
+                          <span style={{ flex: 1, fontSize: 13, fontFamily: "system-ui", color: isChecked ? "#AAA" : "#2A2520", lineHeight: 1.55, textDecoration: isChecked ? "line-through" : "none", textDecorationColor: "#C8C0B0", textAlign: "left" }}>{task.text}</span>
                           <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0 }}>
                             <button onClick={() => startEdit(task)} style={{ background: "none", border: "none", cursor: "pointer", color: "#D0C8BC", fontSize: 12, padding: "0 3px", transition: "color 0.15s ease" }} onMouseEnter={e => e.currentTarget.style.color = week.color} onMouseLeave={e => e.currentTarget.style.color = "#D0C8BC"} title="Edit">✎</button>
                             <button onClick={() => onDeleteTask(task.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "#D0C8BC", fontSize: 15, padding: "0 3px", lineHeight: 1, transition: "color 0.15s ease" }} onMouseEnter={e => e.currentTarget.style.color = "#D13B2A"} onMouseLeave={e => e.currentTarget.style.color = "#D0C8BC"} title="Remove">×</button>
